@@ -34,7 +34,7 @@ import sys
 class CLIProgressWidget:
     def __init__(self, items, width=None, out=sys.stderr):
         self.items = items # Items to itemize
-        self.width = width and width or 100
+        self.width = (width and width or 80) - 2
         self.out = out
         self._cursor = 0
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     speed = 0.1
     for v in [2, 5, 8, 10, 15, 25, 123]:
         print "Testing value", v
-        progress = CLIProgressWidget(v, width=80)
+        progress = CLIProgressWidget(v, width=120)
         progress.reset()
         time.sleep(speed)
         while not progress.finished():
